@@ -1,10 +1,10 @@
 {
   "serverKey": "defaultkey",
-  "serverType": "websocket",
+  "serverType": "enet",
   "serverAddress": "127.0.0.1",
   "serverTickRate": 30,
   "protocol": "1.0.0",
-  "port": 8000,
+  "port": 5000,
   "limitConnections": 4095,
   "limitPlayersPerRoom": 20,
   "limitRooms": 200,

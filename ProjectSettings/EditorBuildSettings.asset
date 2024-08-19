@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/RagonDemo/RagonStart.unity
+    guid: f7556bbb956569443968ea71fe4141f3
+  - enabled: 1
+    path: Assets/RagonDemo/RagonNetworkScene.unity
+    guid: f7aca7eeb6b8b4d40905bef10d1c1a54
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
