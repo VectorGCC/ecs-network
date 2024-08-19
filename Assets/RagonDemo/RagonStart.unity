@@ -221,7 +221,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1692693288}
   - component: {fileID: 1692693287}
-  - component: {fileID: 1692693286}
   - component: {fileID: 1692693285}
   m_Layer: 0
   m_Name: GameNetwork
@@ -242,19 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe64f7a5a2353743b1c575e26525b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1692693286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692693284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547d46126fe845a2bd6725a812c1ffdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _configuration: {fileID: 11400000, guid: b8053433dd9a52d40a37acab64c2e1a6, type: 2}
 --- !u!114 &1692693287
 MonoBehaviour:
   m_ObjectHideFlags: 0
