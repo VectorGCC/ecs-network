@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a0a19593724c4bb0b149994eb27803, type: 3}
   m_Name: Ragon Configuration
   m_EditorClassIdentifier: 
-  Type: 1
-  Address: 127.0.0.1
-  Protocol: 
+  Type: 2
+  Address: ws://127.0.0.1
+  Protocol: 1.0.0
   Port: 5000
   Rate: 30
   Fallback: {fileID: 0}

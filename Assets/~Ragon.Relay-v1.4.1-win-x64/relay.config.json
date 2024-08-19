@@ -1,6 +1,6 @@
 {
   "serverKey": "defaultkey",
-  "serverType": "enet",
+  "serverType": "websocket",
   "serverAddress": "127.0.0.1",
   "serverTickRate": 30,
   "protocol": "1.0.0",
