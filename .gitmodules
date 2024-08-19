@@ -1,3 +1,6 @@
 [submodule "Assets/ME.BECS"]
 	path = Assets/ME.BECS
 	url = https://github.com/karim-dev-coder/ME.BECS.git
+[submodule "Assets/Ragon-Unity-SDK"]
+	path = Assets/Ragon-Unity-SDK
+	url = https://github.com/karim-dev-coder/Ragon-Unity-SDK.git
