@@ -1,0 +1,3 @@
+[submodule "Assets/UI.Windows-submodule"]
+	path = Assets/UI.Windows-submodule
+	url = https://github.com/chromealex/UI.Windows-submodule.git
