@@ -46,6 +46,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 608db40f9a8eff648ab0af853097dbcb, type: 2}
   - {fileID: 11400000, guid: d0821e22f5796104c8160ba07619a077, type: 2}
+  - {fileID: 11400000, guid: a59654e114e071241a5c1ce0316ca65b, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -64,9 +65,9 @@ MonoBehaviour:
       - m_Id: 390ef57d84112d843aec7f5d9b52523c
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 771f050bf9c909347adda73ecc59ce45
-        m_Value: 'ServerData/[BuildTarget]'
+        m_Value: ServerData/[BuildTarget]
       - m_Id: 0af052b671dfcd74d983eeb40f7e7324
-        m_Value: 'http://[PrivateIpAddress]:[HostingServicePort]'
+        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
     m_ProfileEntryNames:
     - m_Id: 6bf1299e5de5fdf41bff69696a72350d
       m_Name: BuildTarget
