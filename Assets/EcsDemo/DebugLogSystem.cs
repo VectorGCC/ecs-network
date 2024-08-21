@@ -9,6 +9,7 @@ namespace EcsDemo
     {
         public void OnUpdate(ref SystemContext context)
         {
+            Debug.Log("DebugLogSystem.OnUpdate");
             var job = API.Query(context.world, context.dependsOn).With<DebugLog>().ForEach((in CommandBufferJob buffer) =>
             {
                 var log = buffer.Get<DebugLog>();

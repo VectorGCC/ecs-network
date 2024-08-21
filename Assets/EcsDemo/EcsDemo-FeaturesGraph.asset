@@ -12,12 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c47971b42c2144aeb6f0fb81f786410, type: 3}
   m_Name: EcsDemo-FeaturesGraph
   m_EditorClassIdentifier: 
-  id: 0
+  id: 26290
   builtInGraph: 0
   isInnerGraph: 0
   serializedNodes: []
-  nodes: []
-  edges: []
+  nodes:
+  - rid: 4748854979942940673
+  - rid: 4748854979942940674
+  - rid: 4748854979942940675
+  edges:
+  - GUID: 1403c383-13b6-4192-a8c8-30a450dbca7a
+    owner: {fileID: 11400000}
+    inputNodeGUID: c250d9ac-5069-467f-86e5-796fffec675d
+    outputNodeGUID: StartNode
+    inputFieldName: inputNodes
+    outputFieldName: output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 3ae0c60c-5c0c-4143-a98b-b7d1caaf547d
+    owner: {fileID: 11400000}
+    inputNodeGUID: EndNode
+    outputNodeGUID: c250d9ac-5069-467f-86e5-796fffec675d
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
   groups: []
   stackNodes: []
   pinnedElements: []
@@ -25,8 +44,75 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 0, y: 0, z: 0}
+  position: {x: 173, y: 142, z: 0}
   scale: {x: 1, y: 1, z: 1}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4748854979942940673
+      type: {class: StartNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        syncPoint: 0
+        syncCount: 0
+        nodeCustomName: 
+        GUID: StartNode
+        groupGUID: 
+        computeOrder: 0
+        position:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 100
+          height: 100
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        isInstance: 0
+    - rid: 4748854979942940674
+      type: {class: ExitNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        syncPoint: 0
+        syncCount: 0
+        nodeCustomName: 
+        GUID: EndNode
+        groupGUID: 
+        computeOrder: 2
+        position:
+          serializedVersion: 2
+          x: 500
+          y: 0
+          width: 100
+          height: 100
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        isInstance: 0
+    - rid: 4748854979942940675
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        syncPoint: 0
+        syncCount: 0
+        nodeCustomName: 
+        GUID: c250d9ac-5069-467f-86e5-796fffec675d
+        groupGUID: 
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: 191
+          y: 64
+          width: 100
+          height: 100
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 4748854979942940676
+    - rid: 4748854979942940676
+      type: {class: DebugLogSystem, ns: EcsDemo, asm: EcsDemo}
+      data: 
