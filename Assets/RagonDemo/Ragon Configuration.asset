@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ragon Configuration
   m_EditorClassIdentifier: 
   Type: 2
-  Address: ws://127.0.0.1
+  Address: ws://127.0.0.1:5000
   Protocol: 1.0.0
   Port: 5000
   Rate: 30
