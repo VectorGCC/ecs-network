@@ -1,0 +1,20 @@
+{
+    "name": "EcsDemo",
+    "rootNamespace": "",
+    "references": [
+        "ME.BECS",
+        "ME.BECS.Features",
+        "ME.BECS.Network",
+        "Unity.Collections",
+        "Unity.Burst"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
