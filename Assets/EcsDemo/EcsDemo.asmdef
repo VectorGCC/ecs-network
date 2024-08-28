@@ -6,7 +6,11 @@
         "ME.BECS.Features",
         "ME.BECS.Network",
         "Unity.Collections",
-        "Unity.Burst"
+        "Unity.Burst",
+        "ME.BECS.Transforms",
+        "ME.BECS.Views",
+        "Unity.TextMeshPro",
+        "Unity.Mathematics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a636fa88b5054528be78fe9f569307ed, type: 3}
   m_Name: ViewsRegistry
   m_EditorClassIdentifier: 
-  prefabId: 0
-  items: []
+  prefabId: 2
+  items:
+  - prefab: {fileID: -1689783468862692246, guid: 94b0b3316f9771a41a43aab5d6adb0c1, type: 3}
+    prefabId: 2
+    references: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c47971b42c2144aeb6f0fb81f786410, type: 3}
   m_Name: EcsDemo-FeaturesGraph
   m_EditorClassIdentifier: 
-  id: 26290
+  id: 26344
   builtInGraph: 0
   isInnerGraph: 0
   serializedNodes: []
@@ -20,19 +20,46 @@ MonoBehaviour:
   - rid: 4748854979942940673
   - rid: 4748854979942940674
   - rid: 4748854979942940675
+  - rid: 4748855138408988720
+  - rid: 4748855138564440119
+  - rid: 4748855138564440462
   edges:
-  - GUID: 1403c383-13b6-4192-a8c8-30a450dbca7a
+  - GUID: 25af023d-f2b4-4924-94ae-79103c912444
     owner: {fileID: 11400000}
     inputNodeGUID: c250d9ac-5069-467f-86e5-796fffec675d
+    outputNodeGUID: 00aa27bd-d806-4470-819a-a0f50dcf838e
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 947dc948-4e01-4660-8651-f768469cd93e
+    owner: {fileID: 11400000}
+    inputNodeGUID: EndNode
+    outputNodeGUID: 30540e06-9b41-4abe-aebc-33a5302eb540
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: fd0939c5-7a7c-48c8-8a89-1d5754bfc83d
+    owner: {fileID: 11400000}
+    inputNodeGUID: 30540e06-9b41-4abe-aebc-33a5302eb540
+    outputNodeGUID: c250d9ac-5069-467f-86e5-796fffec675d
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: b38c85ab-2aa0-4c13-ad6f-d3398ccb65b8
+    owner: {fileID: 11400000}
+    inputNodeGUID: 91bc9851-3f7c-4368-b47c-5d8d950a0c87
     outputNodeGUID: StartNode
     inputFieldName: inputNodes
     outputFieldName: output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 3ae0c60c-5c0c-4143-a98b-b7d1caaf547d
+  - GUID: 3c07528d-66f8-40a3-a8f3-25733b87bdba
     owner: {fileID: 11400000}
-    inputNodeGUID: EndNode
-    outputNodeGUID: c250d9ac-5069-467f-86e5-796fffec675d
+    inputNodeGUID: 00aa27bd-d806-4470-819a-a0f50dcf838e
+    outputNodeGUID: 91bc9851-3f7c-4368-b47c-5d8d950a0c87
     inputFieldName: inputNodes
     outputFieldName: outputNodes
     inputPortIdentifier: 
@@ -44,7 +71,7 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 173, y: 142, z: 0}
+  position: {x: 232, y: 88, z: 0}
   scale: {x: 1, y: 1, z: 1}
   references:
     version: 2
@@ -52,7 +79,7 @@ MonoBehaviour:
     - rid: 4748854979942940673
       type: {class: StartNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
       data:
-        syncPoint: 0
+        syncPoint: 1
         syncCount: 0
         nodeCustomName: 
         GUID: StartNode
@@ -60,10 +87,10 @@ MonoBehaviour:
         computeOrder: 0
         position:
           serializedVersion: 2
-          x: 0
-          y: 0
+          x: -116
+          y: 17
           width: 100
-          height: 100
+          height: 80
         expanded: 1
         enabled: 1
         debug: 0
@@ -73,18 +100,18 @@ MonoBehaviour:
     - rid: 4748854979942940674
       type: {class: ExitNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
       data:
-        syncPoint: 0
+        syncPoint: 1
         syncCount: 0
         nodeCustomName: 
         GUID: EndNode
         groupGUID: 
-        computeOrder: 2
+        computeOrder: 5
         position:
           serializedVersion: 2
-          x: 500
-          y: 0
+          x: 895
+          y: 17
           width: 100
-          height: 100
+          height: 80
         expanded: 1
         enabled: 1
         debug: 0
@@ -94,18 +121,18 @@ MonoBehaviour:
     - rid: 4748854979942940675
       type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
       data:
-        syncPoint: 0
+        syncPoint: 1
         syncCount: 0
         nodeCustomName: 
         GUID: c250d9ac-5069-467f-86e5-796fffec675d
         groupGUID: 
-        computeOrder: 1
+        computeOrder: 3
         position:
           serializedVersion: 2
-          x: 191
-          y: 64
-          width: 100
-          height: 100
+          x: 371
+          y: 13
+          width: 300
+          height: 111
         expanded: 1
         enabled: 1
         debug: 0
@@ -115,4 +142,79 @@ MonoBehaviour:
           rid: 4748854979942940676
     - rid: 4748854979942940676
       type: {class: DebugLogSystem, ns: EcsDemo, asm: EcsDemo}
+      data: 
+    - rid: 4748855138408988720
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        syncPoint: 1
+        syncCount: 0
+        nodeCustomName: 
+        GUID: 00aa27bd-d806-4470-819a-a0f50dcf838e
+        groupGUID: 
+        computeOrder: 2
+        position:
+          serializedVersion: 2
+          x: 37
+          y: 17
+          width: 300
+          height: 107
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 4748855138408988721
+    - rid: 4748855138408988721
+      type: {class: CreatePlayerSystem, ns: EcsDemo, asm: EcsDemo}
+      data:
+        PlayerPrefab:
+          viewSource:
+            providerId: 1
+            prefabId: 2
+    - rid: 4748855138564440119
+      type: {class: GraphNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        syncPoint: 1
+        syncCount: 0
+        nodeCustomName: 
+        GUID: 30540e06-9b41-4abe-aebc-33a5302eb540
+        groupGUID: 
+        computeOrder: 4
+        position:
+          serializedVersion: 2
+          x: 645
+          y: 167
+          width: 300
+          height: 127
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        graphValue: {fileID: 11400000, guid: c2aa5f0bbcb444e4e8fd45055d600fbd, type: 2}
+    - rid: 4748855138564440462
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        syncPoint: 1
+        syncCount: 0
+        nodeCustomName: 
+        GUID: 91bc9851-3f7c-4368-b47c-5d8d950a0c87
+        groupGUID: 
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: -40
+          y: 246
+          width: 100
+          height: 100
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 4748855138564440463
+    - rid: 4748855138564440463
+      type: {class: HealthRecoverySystem, ns: EcsDemo, asm: EcsDemo}
       data: 

@@ -13,10 +13,10 @@ namespace EcsDemo
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Mouse button down");
-                world.SendNetworkEvent(new MouseButtonDownEvent()
+                world.SendNetworkEvent(new CreatePlayerEvent()
                 {
-                    Value = 100
-                }, InputSystem.OnMouseButtonDown);
+                    Name = "Bob"
+                }, CreatePlayerEvent.OnNetworkReceive);
             }
         }
     }
