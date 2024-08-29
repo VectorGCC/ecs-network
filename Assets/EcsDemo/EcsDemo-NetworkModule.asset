@@ -17,7 +17,7 @@ MonoBehaviour:
     maxFrameTime: 100
     inputLag: 1
     transport:
-      rid: 4748854979942940725
+      rid: 4748855160618090716
     eventsStorageProperties:
       capacity: 1000
       capacityPerTick: 30
@@ -31,6 +31,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4748854979942940725
-      type: {class: PhotonTransport, ns: ME.BECS.Network, asm: ME.BECS.Network}
+    - rid: 4748855160618090716
+      type: {class: LocalTransport, ns: ME.BECS.Network, asm: ME.BECS.Network}
       data: 

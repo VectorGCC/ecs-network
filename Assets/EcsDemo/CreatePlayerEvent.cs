@@ -2,6 +2,7 @@ using AOT;
 using ME.BECS;
 using ME.BECS.Network;
 using Unity.Collections;
+using UnityEngine;
 
 namespace EcsDemo
 {
@@ -21,9 +22,10 @@ namespace EcsDemo
 
         [NetworkMethod]
         [MonoPInvokeCallback(typeof(NetworkMethodDelegate))]
-        public static void OnNetworkReceive(in InputData data, ref SystemContext context)
+        public static void OnReceive(in InputData data, ref SystemContext context)
         {
-            context.world.NewEnt().Get<CreatePlayerEvent>() = data.GetData<CreatePlayerEvent>();
+            Debug.Log("Receive create player event");
+            context.world.NewEnt().SetOneShot(data.GetData<CreatePlayerEvent>());
         }
     }
 }

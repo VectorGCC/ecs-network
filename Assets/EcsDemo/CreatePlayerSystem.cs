@@ -1,4 +1,6 @@
+using AOT;
 using ME.BECS;
+using ME.BECS.Network;
 using ME.BECS.Transforms;
 using ME.BECS.Views;
 using Unity.Burst;
@@ -25,6 +27,31 @@ namespace EcsDemo
         public float Value;
         public float MaxValue;
         public float RecoverPerSecond;
+    }
+
+    public struct MovePath : IPackageData, IComponent
+    {
+        public float3 Destination;
+
+        [NetworkMethod]
+        [MonoPInvokeCallback(typeof(NetworkMethodDelegate))]
+        public static void OnReceive(in InputData data, ref SystemContext context)
+        {
+            foreach (var e in API.Query(context.world, context.dependsOn).With<Health>())
+            {
+                e.Get<MovePath>() = data.GetData<MovePath>();
+            }
+        }
+
+        public void Serialize(ref StreamBufferWriter writer)
+        {
+            writer.Write(Destination);
+        }
+
+        public void Deserialize(ref StreamBufferReader reader)
+        {
+            reader.Read(ref Destination);
+        }
     }
 
     public struct HealthRecoverySystem : IUpdate
@@ -59,7 +86,6 @@ namespace EcsDemo
                 _countPlayers++;
 
                 e.InstantiateView(PlayerPrefab);
-                e.Remove<CreatePlayerEvent>();
             }
         }
     }

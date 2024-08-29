@@ -6,9 +6,15 @@ namespace EcsDemo
 {
     public class EcsDemoInitializer : NetworkWorldInitializer
     {
+        public GameObject source;
+        public GameObject target;
+
+
         protected override void LateUpdate()
         {
             base.LateUpdate();
+
+            Debug.Log($"Local: {this.networkModule.LocalPlayerId}");
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -16,7 +22,15 @@ namespace EcsDemo
                 world.SendNetworkEvent(new CreatePlayerEvent()
                 {
                     Name = "Bob"
-                }, CreatePlayerEvent.OnNetworkReceive);
+                }, CreatePlayerEvent.OnReceive);
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                world.SendNetworkEvent(new MovePath()
+                {
+                    Destination = target.transform.position
+                }, MovePath.OnReceive);
             }
         }
     }
