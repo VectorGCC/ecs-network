@@ -31,7 +31,8 @@ namespace EcsDemo
 
     public struct MovePath : IPackageData, IComponent
     {
-        public float3 Destination;
+        public List<float3> Path;
+        public uint CurrentDestinationIndex;
 
         [NetworkMethod]
         [MonoPInvokeCallback(typeof(NetworkMethodDelegate))]
@@ -45,12 +46,44 @@ namespace EcsDemo
 
         public void Serialize(ref StreamBufferWriter writer)
         {
-            writer.Write(Destination);
+            writer.Write(Path);
+            writer.Write(CurrentDestinationIndex);
         }
 
         public void Deserialize(ref StreamBufferReader reader)
         {
-            reader.Read(ref Destination);
+            reader.Read(ref Path);
+            reader.Read(ref CurrentDestinationIndex);
+            Debug.Log(Path.Count);
+        }
+    }
+
+    public struct MovementSystem : IUpdate
+    {
+        public unsafe void OnUpdate(ref SystemContext context)
+        {
+            foreach (var e in API.Query(context.world, context.dependsOn).With<MovePath>().WithAspect<TransformAspect>())
+            {
+                /*
+                var path = e.Read<MovePath>();
+                if (path.CurrentDestinationIndex >= path.Path.Count)
+                {
+                    e.Remove<MovePath>();
+                    continue;
+                }
+
+                var destination = path.Path[context.world.state->allocator, path.CurrentDestinationIndex];
+                var transform = e.GetAspect<TransformAspect>();
+                if (Vector3.Distance(transform.position, destination) < 0.1f)
+                {
+                    e.Get<MovePath>().CurrentDestinationIndex++;
+                }
+                else
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, destination, 1f * context.deltaTime);
+                }
+                */
+            }
         }
     }
 

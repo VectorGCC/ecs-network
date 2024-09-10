@@ -1,6 +1,11 @@
+using System.Linq;
+using ME.BECS;
 using ME.BECS.Network;
 using ME.BECS.Network.Markers;
+using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace EcsDemo
 {
@@ -8,7 +13,6 @@ namespace EcsDemo
     {
         public GameObject source;
         public GameObject target;
-
 
         protected override void LateUpdate()
         {
@@ -27,10 +31,22 @@ namespace EcsDemo
 
             if (Input.GetMouseButtonDown(1))
             {
-                world.SendNetworkEvent(new MovePath()
+                var path = new NavMeshPath();
+                NavMesh.CalculatePath(source.transform.position, target.transform.position, NavMesh.AllAreas, path);
+
+                unsafe
                 {
-                    Destination = target.transform.position
-                }, MovePath.OnReceive);
+                    var list = new List<float3>(ref world.state->allocator, 1u);
+                    foreach (var corner in path.corners)
+                    {
+                        list.Add(ref world.state->allocator, corner);
+                    }
+
+                    world.SendNetworkEvent(new MovePath()
+                    {
+                        Path = list
+                    }, MovePath.OnReceive);
+                }
             }
         }
     }

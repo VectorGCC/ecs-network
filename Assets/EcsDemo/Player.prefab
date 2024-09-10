@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 163955647804825939}
   - component: {fileID: 6545854232771640065}
   - component: {fileID: -1689783468862692246}
-  - component: {fileID: 7590772910945017207}
+  - component: {fileID: -5309921345445726787}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -291,11 +291,11 @@ MonoBehaviour:
       gen: 0
       worldId: 0
   _health: {fileID: 7240632735672981580}
-  _navMeshAgent: {fileID: 7590772910945017207}
+  _navMeshAgent: {fileID: -5309921345445726787}
   references:
     version: 2
     RefIds: []
---- !u!195 &7590772910945017207
+--- !u!195 &-5309921345445726787
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
