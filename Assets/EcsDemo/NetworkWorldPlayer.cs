@@ -1,50 +1,13 @@
-using System;
-using System.Runtime.InteropServices;
-using ByteStream.Interfaces;
-using ByteStream.Mananged;
 using Mirror;
 
-public interface IPackageData
+public partial class NetworkWorldPlayer : NetworkBehaviour
 {
-    void Deserialize(IByteStream stream);
-    void AddEvent();
-}
-
-public struct PackageData<T> : IPackageData where T : unmanaged, INetworkEvent
-{
-    public T Data;
-
-    public void Serialize(ManagedStream stream)
-    {
-        Data.Serialize(stream);
-    }
-
-    public void Deserialize(IByteStream stream)
-    {
-        Data.Serialize(stream);
-    }
-
-    public void AddEvent()
+    [Server]
+    private void OnServerReceiveEvent<T>(T @event) where T : struct
     {
         if (GameManager.Instance.World is ServerWorld serverWorld)
         {
-            serverWorld.AddEvent(Data);
+            serverWorld.AddEvent(@event);
         }
-    }
-}
-
-public class NetworkWorldPlayer : NetworkBehaviour
-{
-    [Command]
-    public void CmdSendNetworkEvent(string typeName, byte[] bytes)
-    {
-        var type = Type.GetType(typeName);
-        var packageDataType = typeof(PackageData<>).MakeGenericType(type);
-        var package = Activator.CreateInstance(packageDataType) as IPackageData;
-
-        var stream = new ManagedStream();
-        stream.ResetRead(bytes);
-        package.Deserialize(stream);
-        package.AddEvent();
     }
 }

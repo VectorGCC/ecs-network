@@ -1,32 +1,46 @@
 using ByteStream.Interfaces;
 using Mirror;
+using SevenBoldPencil.EasyEvents.EcsDemo;
+using UnityCodeGen;
+using UnityEditor;
 using UnityEngine;
 
-public struct TestEvent : INetworkEvent
+[NetworkEvent]
+public struct TestEvent
 {
     public int Value;
-
-    public void Serialize(IByteStream stream)
-    {
-        stream.Serialize(ref Value);
-    }
 }
 
 public class StartWorldScenario : MonoBehaviour
 {
     public bool _sended;
+    public EntityView _entityView;
 
     void Update()
     {
         if (_sended)
             return;
+        
         if (NetworkClient.localPlayer == null)
-            return;
+          //  return;
+        
+        _sended = true;
 
-        var test = new TestEvent()
+        /*
+        GameManager.Instance.World.SendNetworkEvent(new TestEvent()
         {
             Value = 100
-        };
-        GameManager.Instance.World.SendNetworkEvent(test);
+        });
+        */
+
+        if (GameManager.Instance.World is ServerWorld serverWorld)
+        {
+            var ent = serverWorld.CreateEntity();
+            ent.Get<SyncComponent>() = new SyncComponent()
+            {
+                Value = 50
+            };
+            ent.InstantiateView(_entityView);
+        }
     }
 }

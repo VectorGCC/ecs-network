@@ -4,16 +4,6 @@ using Leopotam.EcsLite;
 
 namespace SevenBoldPencil.EasyEvents
 {
-    /// <summary>
-    /// Simultaneously there can be only one instance of this event type
-    /// </summary>
-    public interface IEventSingleton { }
-
-    /// <summary>
-    /// Simultaneously there can be multiple instances of this event type
-    /// </summary>
-    public interface IEventReplicant { }
-
     public class EventsBus
     {
         private readonly EcsWorld eventsWorld;
@@ -26,67 +16,16 @@ namespace SevenBoldPencil.EasyEvents
             singletonEntities = new Dictionary<Type, int>(capacityEventsSingleton);
             cachedFilters = new Dictionary<Type, EcsFilter>(capacityEvents);
         }
-
-        #region EventsSingleton
-
-        public ref T NewEventSingleton<T>() where T : struct, IEventSingleton
-        {
-            var type = typeof(T);
-            var eventsPool = eventsWorld.GetPool<T>();
-            if (!singletonEntities.TryGetValue(type, out var eventEntity)) {
-                eventEntity = eventsWorld.NewEntity();
-                singletonEntities.Add(type, eventEntity);
-                return ref eventsPool.Add(eventEntity);
-            }
-
-            return ref eventsPool.Get(eventEntity);
-        }
-
-        public bool HasEventSingleton<T>() where T : struct, IEventSingleton
-        {
-            return singletonEntities.ContainsKey(typeof(T));
-        }
-
-        /// <summary>
-        /// Returns by value, use GetEventBodySingleton to get event body by ref
-        /// </summary>
-        /// <param name="eventBody"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public bool HasEventSingleton<T>(out T eventBody) where T : struct, IEventSingleton
-        {
-            var hasEvent = singletonEntities.TryGetValue(typeof(T), out var eventEntity);
-            eventBody = hasEvent ? eventsWorld.GetPool<T>().Get(eventEntity) : default;
-            return hasEvent;
-        }
-
-        public ref T GetEventBodySingleton<T>() where T : struct, IEventSingleton
-        {
-            var eventEntity = singletonEntities[typeof(T)];
-            var eventsPool = eventsWorld.GetPool<T>();
-            return ref eventsPool.Get(eventEntity);
-        }
-
-        public void DestroyEventSingleton<T>() where T : struct, IEventSingleton
-        {
-            var type = typeof(T);
-            if (singletonEntities.TryGetValue(type, out var eventEntity)) {
-                eventsWorld.DelEntity(eventEntity);
-                singletonEntities.Remove(type);
-            }
-        }
-
-        #endregion
-
+        
         #region Events
 
-        public ref T NewEvent<T>() where T : struct, IEventReplicant
+        public ref T NewEvent<T>() where T : struct
         {
             var newEntity = eventsWorld.NewEntity();
             return ref eventsWorld.GetPool<T>().Add(newEntity);
         }
 
-        private EcsFilter GetFilter<T>() where T : struct, IEventReplicant
+        private EcsFilter GetFilter<T>() where T : struct
         {
             var type = typeof(T);
             if (!cachedFilters.TryGetValue(type, out var filter)) {
@@ -97,19 +36,19 @@ namespace SevenBoldPencil.EasyEvents
             return filter;
         }
 
-        public EcsFilter GetEventBodies<T>(out EcsPool<T> pool) where T : struct, IEventReplicant
+        public EcsFilter GetEventBodies<T>(out EcsPool<T> pool) where T : struct
         {
             pool = eventsWorld.GetPool<T>();
             return GetFilter<T>();
         }
 
-        public bool HasEvents<T>() where T : struct, IEventReplicant
+        public bool HasEvents<T>() where T : struct
         {
             var filter = GetFilter<T>();
             return filter.GetEntitiesCount() != 0;
         }
 
-        public void DestroyEvents<T>() where T : struct, IEventReplicant
+        public void DestroyEvents<T>() where T : struct
         {
             foreach (var eventEntity in GetFilter<T>()) {
                 eventsWorld.DelEntity(eventEntity);
@@ -143,13 +82,8 @@ namespace SevenBoldPencil.EasyEvents
                 }
             }
 
-            public DestroyEventsSystem IncReplicant<R>() where R : struct, IEventReplicant {
+            public DestroyEventsSystem IncReplicant<R>() where R : struct {
                 destructionActions.Add(() => eventsBus.DestroyEvents<R>());
-                return this;
-            }
-
-            public DestroyEventsSystem IncSingleton<S>() where S : struct, IEventSingleton {
-                destructionActions.Add(() => eventsBus.DestroyEventSingleton<S>());
                 return this;
             }
         }

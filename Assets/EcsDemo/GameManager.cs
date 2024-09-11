@@ -11,10 +11,9 @@ public interface IWorld
     void Start();
     void OnDestroy();
     void Update();
-    void SendNetworkEvent<T>(T @event) where T : unmanaged, INetworkEvent;
 }
 
-public interface INetworkEvent : IEventReplicant
+public interface INetworkEvent
 {
     void Serialize(IByteStream stream);
 }
@@ -52,28 +51,6 @@ public class ClientWorld : IWorld
     public void Update()
     {
     }
-
-    public void SendNetworkEvent<T>(T @event) where T : unmanaged, INetworkEvent
-    {
-        if (_networkPlayer == null && !NetworkClient.localPlayer.TryGetComponent<NetworkWorldPlayer>(out _networkPlayer))
-        {
-            throw new System.Exception("NetworkWorldPlayer not found");
-        }
-
-        var package = new PackageData<T>
-        {
-            Data = @event
-        };
-
-        var stream = new ManagedStream();
-        stream.ResetWrite(16);
-        package.Serialize(stream);
-        var bytes = stream.Buffer;
-
-        var typeName = typeof(T).FullName;
-
-        _networkPlayer.CmdSendNetworkEvent(typeName, bytes);
-    }
 }
 
 public class GameManager : MonoBehaviour
@@ -98,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        World.Start();
+        World?.Start();
     }
 
     private void OnDestroy()
