@@ -1,8 +1,5 @@
-using ByteStream.Interfaces;
 using Mirror;
 using SevenBoldPencil.EasyEvents.EcsDemo;
-using UnityCodeGen;
-using UnityEditor;
 using UnityEngine;
 
 [NetworkEvent]

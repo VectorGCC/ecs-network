@@ -1,5 +1,3 @@
-using ByteStream.Interfaces;
-using ByteStream.Mananged;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Mirror;
@@ -11,11 +9,6 @@ public interface IWorld
     void Start();
     void OnDestroy();
     void Update();
-}
-
-public interface INetworkEvent
-{
-    void Serialize(IByteStream stream);
 }
 
 public class TestEventSystem : IEcsRunSystem
