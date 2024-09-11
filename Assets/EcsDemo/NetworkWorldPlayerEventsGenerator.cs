@@ -1,6 +1,7 @@
 using System.Text;
 using UnityCodeGen;
 using UnityEditor;
+using UnityEngine;
 
 namespace SevenBoldPencil.EasyEvents.EcsDemo
 {
@@ -15,7 +16,7 @@ namespace SevenBoldPencil.EasyEvents.EcsDemo
             sb.AppendLine("using Mirror;");
             sb.AppendLine("public partial class NetworkWorldPlayer : NetworkBehaviour");
             sb.AppendLine("{");
-            var types = TypeCache.GetTypesWithAttribute<NetworkEvent>();
+            var types = TypeCache.GetTypesWithAttribute<NetworkEventAttribute>();
             foreach (var type in types)
             {
                 var name = type.FullName;
@@ -27,7 +28,7 @@ namespace SevenBoldPencil.EasyEvents.EcsDemo
             }
 
             sb.AppendLine("}");
-            
+
             context.AddCode("NetworkWorldPlayer.Events.Generated.cs", sb.ToString());
         }
     }

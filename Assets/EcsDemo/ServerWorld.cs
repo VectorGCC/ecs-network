@@ -7,6 +7,7 @@ using SevenBoldPencil.EasyEvents;
 using Object = UnityEngine.Object;
 using Time = UnityEngine.Time;
 
+[EcsSystem]
 public class TestRecoverSystem : IEcsRunSystem
 {
     public void Run(IEcsSystems systems)
@@ -80,6 +81,7 @@ public struct Enumerator : IDisposable
     }
 }
 
+[EcsSystem]
 public class RemoveVersionComponentSystem : IEcsRunSystem
 {
     public void Run(IEcsSystems systems)
@@ -106,14 +108,13 @@ public class ServerWorld : IWorld
         _systems = new EcsSystems(_world);
         _eventBus = new EventsBus();
 
+        // Если сломалось, то закомментируй эти строку:
+        // Tools -> UnityCodeGen -> Generate
+        // Раскоментируй строки.
+        //EcsSystemsCollection.Add(_systems);
+        //NetworkEventDestroy.Add(_systems, _eventBus);
+
         _systems
-            .Add(new TestEventSystem())
-            .Add(new TestRecoverSystem())
-            .Add(new RemoveVersionComponentSystem())
-            // Автоматическое удаление ивентов.
-            .Add(_eventBus.GetDestroyEventsSystem()
-                //.IncSingleton<PlayerReloadGunEvent>()
-            )
 #if UNITY_EDITOR
             // Регистрируем отладочные системы по контролю за состоянием каждого отдельного мира:
             // .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem("events"))

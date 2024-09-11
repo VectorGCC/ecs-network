@@ -6,7 +6,7 @@ using UnityEditor;
 
 namespace SevenBoldPencil.EasyEvents.EcsDemo
 {
-    public class NetworkEvent : Attribute
+    public class NetworkEventAttribute : Attribute
     {
     }
 
@@ -21,7 +21,7 @@ namespace SevenBoldPencil.EasyEvents.EcsDemo
             sb.AppendLine("using Mirror;");
             sb.AppendLine("public static class NetworkEventExtensions {");
 
-            var types = TypeCache.GetTypesWithAttribute<NetworkEvent>();
+            var types = TypeCache.GetTypesWithAttribute<NetworkEventAttribute>();
             foreach (var type in types)
             {
                 var code = @"public static void SendNetworkEvent(this IWorld world, " + type.FullName + @" @event){

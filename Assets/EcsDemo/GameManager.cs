@@ -11,6 +11,7 @@ public interface IWorld
     void Update();
 }
 
+[EcsSystem]
 public class TestEventSystem : IEcsRunSystem
 {
     private EcsCustomInject<EventsBus> _eventBus;
@@ -62,8 +63,8 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
 
-        World = NetworkServer.active ? (IWorld) new ServerWorld() : World;
-        World = NetworkClient.active ? (IWorld) new ClientWorld() : World;
+        World = NetworkServer.active ? new ServerWorld() : World;
+        World = NetworkClient.active ? new ClientWorld() : World;
     }
 
     private void Start()
