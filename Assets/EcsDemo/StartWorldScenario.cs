@@ -13,7 +13,7 @@ public class StartWorldScenario : MonoBehaviour
 
         if (NetworkClient.active)
         {
-            GameManager.Instance.World.SendNetworkEvent(new TestEvent()
+            NetworkClient.Send(new TestEvent()
             {
                 Value = 100
             });

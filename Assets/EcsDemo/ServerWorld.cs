@@ -17,7 +17,7 @@ public class ServerWorld : IWorld
         _systems
             .Add(new TestEventSystem())
             .Add(new TestRecoverSystem())
-            .Add(new RemoveVersionComponentSystem())
+            .Add(new VersioningSystem())
             .Add(new NetworkEventsSystem(_eventBus)
                 .Register<TestEvent>())
 #if UNITY_EDITOR

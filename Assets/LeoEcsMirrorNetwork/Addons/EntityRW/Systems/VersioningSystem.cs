@@ -1,6 +1,6 @@
 using Leopotam.EcsLite;
 
-public class RemoveVersionComponentSystem : IEcsRunSystem
+public class VersioningSystem : IEcsRunSystem
 {
     public void Run(IEcsSystems systems)
     {
