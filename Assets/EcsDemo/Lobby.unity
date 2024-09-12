@@ -206,10 +206,14 @@ PrefabInstance:
     - target: {fileID: 6902534888765376180, guid: 62d3b9c46c08c934ea2ac02811b3028d, type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 898365878183789939, guid: 94b0b3316f9771a41a43aab5d6adb0c1, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902534888765376180, guid: 62d3b9c46c08c934ea2ac02811b3028d, type: 3}
+      propertyPath: autoCreatePlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6902534888765376180, guid: 62d3b9c46c08c934ea2ac02811b3028d, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6902534888765376180, guid: 62d3b9c46c08c934ea2ac02811b3028d, type: 3}
       propertyPath: 'spawnPrefabs.Array.data[0]'

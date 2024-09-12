@@ -1,12 +1,5 @@
 using Mirror;
-using SevenBoldPencil.EasyEvents.EcsDemo;
 using UnityEngine;
-
-[NetworkEvent]
-public struct TestEvent
-{
-    public int Value;
-}
 
 public class StartWorldScenario : MonoBehaviour
 {
@@ -17,18 +10,16 @@ public class StartWorldScenario : MonoBehaviour
     {
         if (_sended)
             return;
-        
-        if (NetworkClient.localPlayer == null)
-          //  return;
-        
-        _sended = true;
 
-        /*
-        GameManager.Instance.World.SendNetworkEvent(new TestEvent()
+        if (NetworkClient.active)
         {
-            Value = 100
-        });
-        */
+            GameManager.Instance.World.SendNetworkEvent(new TestEvent()
+            {
+                Value = 100
+            });
+            _sended = true;
+        }
+
 
         if (GameManager.Instance.World is ServerWorld serverWorld)
         {
