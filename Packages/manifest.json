@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
+    "com.mackysoft.serializereference-extensions": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions",
     "com.annulusgames.unity-codegen": "https://github.com/AnnulusGames/UnityCodeGen.git?path=/Assets/UnityCodeGen",
     "com.leopotam.ecslite": "https://github.com/Leopotam/ecslite.git",
     "com.leopotam.ecslite.di": "https://github.com/Leopotam/ecslite-di.git",

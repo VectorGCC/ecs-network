@@ -15,7 +15,7 @@ public class ServerWorld : IWorld
         _eventBus = new EventsBus();
 
         _systems
-            .Add(new TestEventSystem())
+            .AddAutoCollectSystems()
             .Add(new TestRecoverSystem())
             .Add(new VersioningSystem())
             .Add(new NetworkEventsSystem(_eventBus)

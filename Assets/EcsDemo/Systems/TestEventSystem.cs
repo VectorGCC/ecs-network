@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using SevenBoldPencil.EasyEvents;
 using UnityEngine;
 
+[SystemAutoCollect]
 public class TestEventSystem : IEcsRunSystem
 {
     private EcsCustomInject<EventsBus> _eventBus;
