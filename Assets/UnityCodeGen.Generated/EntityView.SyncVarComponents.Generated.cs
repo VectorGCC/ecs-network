@@ -2,21 +2,21 @@
 using Mirror;
 public abstract partial class EntityView : EntityViewBase
 {
-[SyncVar(hook = nameof(SyncComponentHook))] public SyncComponent SyncComponent;
-public void SyncComponentHook(SyncComponent oldComponent, SyncComponent newComponent)
-{
-ApplyState();
-}
 [SyncVar(hook = nameof(TyncComponentHook))] public TyncComponent TyncComponent;
 public void TyncComponentHook(TyncComponent oldComponent, TyncComponent newComponent)
 {
 ApplyState();
 }
+[SyncVar(hook = nameof(SyncComponentHook))] public SyncComponent SyncComponent;
+public void SyncComponentHook(SyncComponent oldComponent, SyncComponent newComponent)
+{
+ApplyState();
+}
 protected override T Read<T>() where T : struct
 {
- if (SyncComponent is T component0)
+ if (TyncComponent is T component0)
 return component0;
- if (TyncComponent is T component1)
+ if (SyncComponent is T component1)
 return component1;
 return default;
 }
@@ -27,8 +27,8 @@ return;
 if (_entity.Version != _lastVersion)
 {
 _lastVersion = _entity.Version;
-SyncComponent = _entity.Read<SyncComponent>();
 TyncComponent = _entity.Read<TyncComponent>();
+SyncComponent = _entity.Read<SyncComponent>();
 }
 }
 }
